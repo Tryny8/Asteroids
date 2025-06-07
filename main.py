@@ -25,10 +25,13 @@ def main():
    # Init Object
    asteroidField = AsteroidField()
    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+   police = pygame.font.SysFont("monospace", 50)
+   text_end_game = police.render ("Game over!", 2, "red")
 
    # Loop Game   
    dt = 0
-   while True:
+   running = True
+   while running:
       for event in pygame.event.get():
          if event.type == pygame.QUIT:
             return
@@ -41,12 +44,21 @@ def main():
       
       for obj in drawable:
          obj.draw(screen)
+         
+      for asteroid in asteroids:
+         collision = asteroid.check_colliding(player)
+         if collision == True:
+            screen.blit(text_end_game, ((SCREEN_WIDTH / 2) - 133, (SCREEN_HEIGHT / 2) - 30))
+            running = False
             
       pygame.display.flip()
       
       # limit the framerate to 60 FPS
       dt = clock.tick(60) / 1000
-
+   
+   # Quit programme
+   pygame.time.wait(3000)
+   pygame.quit()
 
 if __name__ == "__main__":
     main()
