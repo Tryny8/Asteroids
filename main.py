@@ -6,33 +6,28 @@ from asteroidfield import AsteroidField
 
 
 def main():
+   print(f"Starting Asteroids! \n Screen width / height: {SCREEN_WIDTH} / {SCREEN_HEIGHT}")
+   
    # Init window
    pygame.init()
    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-   print("Starting Asteroids!")
-   print(f"Screen width: {SCREEN_WIDTH}")
-   print(f"Screen height: {SCREEN_HEIGHT}")
-   
-   # Init FPS
    clock = pygame.time.Clock()
-   dt = 0
    
    # Init Group
    updatable = pygame.sprite.Group()
    drawable = pygame.sprite.Group()
    asteroids = pygame.sprite.Group()
-   Player.containers = (updatable, drawable)
+   
    Asteroid.containers = (asteroids, updatable, drawable)
-   AsteroidField.containers = (updatable)
-   
-   # Init Player
-   x = SCREEN_WIDTH / 2
-   y = SCREEN_HEIGHT / 2
-   player = Player(x, y)
-   
-   # Init AsteroidField
+   AsteroidField.containers = updatable
+   Player.containers = (updatable, drawable)
+
+   # Init Object
    asteroidField = AsteroidField()
-   
+   player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+
+   # Loop Game   
+   dt = 0
    while True:
       for event in pygame.event.get():
          if event.type == pygame.QUIT:
@@ -43,8 +38,9 @@ def main():
       
       # Update and draw object
       updatable.update(dt)
-      for sprite in drawable:
-         sprite.draw(screen)
+      
+      for obj in drawable:
+         obj.draw(screen)
             
       pygame.display.flip()
       
