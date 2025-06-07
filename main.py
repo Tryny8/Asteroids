@@ -33,7 +33,7 @@ def main():
       # Update Ecran
       screen.fill("black")
       
-      # Update Player
+      # Update and draw object
       updatable.update(dt)
       for sprite in drawable:
          sprite.draw(screen)
