@@ -46,8 +46,7 @@ def main():
          obj.draw(screen)
          
       for asteroid in asteroids:
-         collision = asteroid.check_colliding(player)
-         if collision == True:
+         if asteroid.check_colliding(player):
             screen.blit(text_end_game, ((SCREEN_WIDTH / 2) - 133, (SCREEN_HEIGHT / 2) - 30))
             running = False
             
