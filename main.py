@@ -58,7 +58,7 @@ def main():
             screen.blit(text_end_game, ((SCREEN_WIDTH / 2) - 133, (SCREEN_HEIGHT / 2) - 30))
             running = False
          for shot in shots:
-            if shot.check_colliding(asteroid):
+            if asteroid.check_colliding(shot):
                screen.blit(text_shoot, ((SCREEN_WIDTH / 2) - 133, (SCREEN_HEIGHT / 2) - 30))
                asteroid.kill()
                shot.kill()
