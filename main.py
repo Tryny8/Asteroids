@@ -60,7 +60,7 @@ def main():
          for shot in shots:
             if asteroid.check_colliding(shot):
                screen.blit(text_shoot, ((SCREEN_WIDTH / 2) - 133, (SCREEN_HEIGHT / 2) - 30))
-               asteroid.kill()
+               asteroid.split()
                shot.kill()
       
       pygame.display.flip()
