@@ -3,6 +3,7 @@ from constants import *
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+from shots import Shot
 
 
 def main():
@@ -17,14 +18,19 @@ def main():
    updatable = pygame.sprite.Group()
    drawable = pygame.sprite.Group()
    asteroids = pygame.sprite.Group()
+   shots = pygame.sprite.Group()
    
    Asteroid.containers = (asteroids, updatable, drawable)
    AsteroidField.containers = updatable
    Player.containers = (updatable, drawable)
+   Shot.containers = (shots, updatable, drawable)
 
    # Init Object
    asteroidField = AsteroidField()
+   
    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+   
+   # Init Text in Game
    police = pygame.font.SysFont("monospace", 50)
    text_end_game = police.render ("Game over!", 2, "red")
 
@@ -39,9 +45,10 @@ def main():
       # Update Ecran
       screen.fill("black")
       
-      # Update and draw object
+      # Update object
       updatable.update(dt)
       
+      # Draw object
       for obj in drawable:
          obj.draw(screen)
          
@@ -49,7 +56,7 @@ def main():
          if asteroid.check_colliding(player):
             screen.blit(text_end_game, ((SCREEN_WIDTH / 2) - 133, (SCREEN_HEIGHT / 2) - 30))
             running = False
-            
+      
       pygame.display.flip()
       
       # limit the framerate to 60 FPS
