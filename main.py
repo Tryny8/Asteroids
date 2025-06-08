@@ -33,6 +33,7 @@ def main():
    # Init Text in Game
    police = pygame.font.SysFont("monospace", 50)
    text_end_game = police.render ("Game over!", 2, "red")
+   text_shoot = police.render ("Touché", 2, "red")
 
    # Loop Game   
    dt = 0
@@ -56,6 +57,11 @@ def main():
          if asteroid.check_colliding(player):
             screen.blit(text_end_game, ((SCREEN_WIDTH / 2) - 133, (SCREEN_HEIGHT / 2) - 30))
             running = False
+         for shot in shots:
+            if shot.check_colliding(asteroid):
+               screen.blit(text_shoot, ((SCREEN_WIDTH / 2) - 133, (SCREEN_HEIGHT / 2) - 30))
+               asteroid.kill()
+               shot.kill()
       
       pygame.display.flip()
       
