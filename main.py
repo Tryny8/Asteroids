@@ -3,17 +3,16 @@ from constants import *
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
-from shots import Shot
+from shots import Shot  
 
 
 def main():
    print(f"Starting Asteroids! \n Screen width / height: {SCREEN_WIDTH} / {SCREEN_HEIGHT}")
-   
    # Init window
    pygame.init()
    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
    clock = pygame.time.Clock()
-   
+
    # Init Group
    updatable = pygame.sprite.Group()
    drawable = pygame.sprite.Group()
@@ -31,7 +30,8 @@ def main():
    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
    
    # Init Text in Game
-   police = pygame.font.SysFont("monospace", 50)
+   police = pygame.font.Font("font/Arial.ttf", 50)
+   # police = pygame.font.SysFont("monospace", 50)
    text_end_game = police.render ("Game over!", 2, "red")
    text_shoot = police.render ("Touché", 2, "red")
 
