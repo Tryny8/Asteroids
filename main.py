@@ -3,10 +3,12 @@ from constants import *
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
-from shots import Shot  
+from shots import Shot
+import asyncio
 
 
-def main():
+
+async def main():
    print(f"Starting Asteroids! \n Screen width / height: {SCREEN_WIDTH} / {SCREEN_HEIGHT}")
    # Init window
    pygame.init()
@@ -67,10 +69,11 @@ def main():
       
       # limit the framerate to 60 FPS
       dt = clock.tick(60) / 1000
+      await asyncio.sleep(0)
    
    # Quit programme
    pygame.time.wait(3000)
    pygame.quit()
 
-if __name__ == "__main__":
-    main()
+
+asyncio.run(main())

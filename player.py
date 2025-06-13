@@ -1,5 +1,6 @@
 import pygame
 from circleshape import CircleShape
+from config import *
 from constants import *
 from shots import Shot
 
@@ -39,18 +40,18 @@ class Player(CircleShape):
         self.shoot_timer -= dt
         keys = pygame.key.get_pressed()
 
-        if keys[pygame.K_q]:
+        if keys[KEY_LEFT]:
             # Key left
             self.rotate(-dt)
-        if keys[pygame.K_d]:
+        if keys[KEY_RIGHT]:
             # Key right
             self.rotate(dt)
-        if keys[pygame.K_z]:
+        if keys[KEY_UP]:
             # Key forward
             self.move(dt)
-        if keys[pygame.K_s]:
+        if keys[KEY_DOWN]:
             # Key backward
             self.move(-dt)
-        if keys[pygame.K_SPACE]:
+        if keys[KEY_SHOOT]:
             # Key Space (Shoot)
             self.shoot()
