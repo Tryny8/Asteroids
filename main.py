@@ -6,7 +6,7 @@ from asteroidfield import AsteroidField
 from shots import Shot
 import asyncio
 
-
+__version__ = "1.0.3"
 
 async def main():
    print(f"Starting Asteroids! \n Screen width / height: {SCREEN_WIDTH} / {SCREEN_HEIGHT}")
@@ -34,7 +34,7 @@ async def main():
    # Init Text in Game
    police = pygame.font.Font("font/Arial.ttf", 50)
    # police = pygame.font.SysFont("monospace", 50)
-   text_Gui = police.render ("New features: Gui - Standby", 2, "green")
+   text_Gui = police.render ("Gui - Standby", 2, "green")
    text_end_game = police.render ("Game over!", 2, "red")
    text_shoot = police.render ("Touché", 2, "red")
 
