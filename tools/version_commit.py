@@ -21,6 +21,21 @@ def bump_version(version: str) -> str:
     major, minor, patch = map(int, version.split("."))
     return f"{major}.{minor}.{patch + 1}"
 
+def is_valid_version(version: str) -> bool:
+    return bool(re.match(r"^\d+\.\d+\.\d+$", version))
+
+def choose_version(current_version: str) -> str:
+    print(f"Version actuelle : {current_version}")
+    choice = input("Souhaites-tu entrer une version manuellement ? (y/N): ").strip().lower()
+    if choice == "y":
+        while True:
+            new_version = input("Entrez la nouvelle version (ex: 1.2.0): ").strip()
+            if is_valid_version(new_version):
+                return new_version
+            print("⚠️ Format invalide. Utilise le format majeur.mineur.correctif (ex: 1.2.0)")
+    else:
+        return bump_version(current_version)
+
 def update_main_py(new_version: str):
     """Met à jour la variable __version__ dans main.py."""
     content = MAIN_FILE.read_text(encoding="utf-8")
@@ -45,7 +60,7 @@ def main():
         exit(1)
     
     if len(sys.argv) < 2:
-        print("Usage : python version_commit.py 'Message de commit'")
+        print("Usage : python tools/version_commit.py 'Message de commit'")
         sys.exit(1)
     commit_message = sys.argv[1]
 
