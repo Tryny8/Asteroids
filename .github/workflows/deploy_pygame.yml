@@ -34,11 +34,9 @@ jobs:
         rm -rf build/
         timeout 300s python -m pygbag --build main.py
 
-    - name: Inject version in index.html
+    - name: Postprocess - Inject version from main.py
       run: |
-        VERSION=$(date +%Y%m%d%H%M%S)
-        sed -i "s|</title>|</title>\n<!-- version: $VERSION -->|" build/web/index.html
-        echo "$VERSION" > build/web/version.txt
+        python postprocess.py
 
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4
