@@ -6,7 +6,7 @@ from asteroidfield import AsteroidField
 from shots import Shot
 import asyncio
 
-__version__ = "1.0.3"
+__version__ = "1.0.4"
 
 async def main():
    print(f"Starting Asteroids! \n Screen width / height: {SCREEN_WIDTH} / {SCREEN_HEIGHT}")
@@ -33,8 +33,10 @@ async def main():
    
    # Init Text in Game
    police = pygame.font.Font("font/Arial.ttf", 50)
+   police_data = pygame.font.Font("font/Arial.ttf", 25)
    # police = pygame.font.SysFont("monospace", 50)
-   text_Gui = police.render ("Gui - Standby", 2, "green")
+   text_version = police_data.render (f"Version: {__version__}", 2, "green")
+   text_Gui = police_data.render ("Gui - Standby", 2, "green")
    text_end_game = police.render ("Game over!", 2, "red")
    text_shoot = police.render ("Touché", 2, "red")
 
@@ -51,7 +53,8 @@ async def main():
       
       # Update object
       updatable.update(dt)
-      screen.blit(text_Gui, ((SCREEN_WIDTH / 2) - 160, 0))
+      screen.blit(text_version, (10, 0))
+      screen.blit(text_Gui, ((SCREEN_WIDTH / 2) - 80, 0))
       
       # Draw object
       for obj in drawable:
