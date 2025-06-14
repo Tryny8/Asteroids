@@ -6,7 +6,7 @@ from asteroidfield import AsteroidField
 from shots import Shot
 import asyncio
 
-__version__ = '1.0.8'
+__version__ = '1.0.9'
 
 async def main():
    print(f"Starting Asteroids! \n Screen width / height: {SCREEN_WIDTH} / {SCREEN_HEIGHT}")

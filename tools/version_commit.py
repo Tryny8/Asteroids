@@ -60,6 +60,6 @@ def main():
 if __name__ == "__main__":
     """
     Commande d'utilisation:
-    python version_commit.py "ici le commit"
+    python tools/version_commit.py "ici le commit"
     """
     main()
