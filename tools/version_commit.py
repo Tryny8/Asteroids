@@ -65,7 +65,7 @@ def main():
     commit_message = sys.argv[1]
 
     old_version = extract_version()
-    new_version = bump_version(old_version)
+    new_version = choose_version(old_version)
     print(f"Ancienne version : {old_version} → Nouvelle version : {new_version}")
 
     update_main_py(new_version)
