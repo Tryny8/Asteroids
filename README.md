@@ -14,8 +14,8 @@ via [pygbag](https://github.com/pygame-web/pygbag) pour être jouable sur naviga
 
 ✅ Compatible desktop  
 ✅ Jouable sur GitHub Pages  
-✅ Contrôles clavier optimisés Qwerty ou Azerty
-✅ Code Python structuré et réutilisable
+✅ Contrôles clavier optimisés Qwerty ou Azerty  
+✅ Code Python structuré et réutilisable  
 
 ---
 

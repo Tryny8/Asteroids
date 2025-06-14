@@ -6,7 +6,10 @@ from entities.asteroid_manager import AsteroidField
 from entities.shots import Shot
 import asyncio
 
-__version__ = '1.1.0'
+__version__ = '1.1.1'
+"""
+python tools/version_commit.py "Commit"
+"""
 
 async def main():
    print(f"Starting Asteroids! \n Screen width / height: {SCREEN_WIDTH} / {SCREEN_HEIGHT}")
