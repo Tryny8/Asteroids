@@ -1,4 +1,5 @@
-name: Asteroids Clone with Pygbag
+name: Deploy Asteroids Clone to GitHub Pages
+
 on:
   push:
     branches:
@@ -6,28 +7,30 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-pygbag:
-    name: Tryny8 - Asteroids Clone
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Checkout
+    - name: Checkout source code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
       run: |
-            echo "Attempting to install pygbag"
-            python -m pip install pygbag
-            echo "Successfully installed pygbag"
-            echo "Attempting to build the game"
-            python -m pygbag --build $GITHUB_WORKSPACE/main.py
-            echo "Successfully build the game and complied to WebAssembly"
+        python -m pip install --upgrade pip
+        pip install pygbag
 
-    - name : "Upload to GitHub pages branch gh-pages"
-      uses: JamesIves/github-pages-deploy-action@4.1.7
-      with:
-        branch: gh-pages
-        folder: build/web
+    - name: Build game with pygbag
+      run: |
+        rm -rf build/
+        python -m pygbag main.py
 
-    - name: Install Python dependencies
-      uses: py-actions/py-dependency-install@v4
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4
       with:
-        path: "requirements.txt"
+        branch: gh-pages       # La branche de déploiement
+        folder: build/web      # Le dossier à publier (généré par pygbag)
