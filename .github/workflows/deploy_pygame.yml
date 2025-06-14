@@ -32,7 +32,7 @@ jobs:
     - name: Build game with pygbag
       run: |
         rm -rf build/
-        python -m pygbag main.py
+        timeout 300s python -m pygbag --debug main.py
 
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4
