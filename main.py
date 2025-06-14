@@ -1,12 +1,12 @@
 import pygame
-from constants import *
-from player import Player
-from asteroid import Asteroid
-from asteroidfield import AsteroidField
-from shots import Shot
+from config.constants import *
+from entities.player import Player
+from entities.asteroid import Asteroid
+from entities.asteroid_manager import AsteroidField
+from entities.shots import Shot
 import asyncio
 
-__version__ = '1.0.11'
+__version__ = '1.1.0'
 
 async def main():
    print(f"Starting Asteroids! \n Screen width / height: {SCREEN_WIDTH} / {SCREEN_HEIGHT}")

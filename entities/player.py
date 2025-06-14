@@ -1,8 +1,8 @@
 import pygame
-from circleshape import CircleShape
-from config import *
-from constants import *
-from shots import Shot
+from game_objects.circleshape import CircleShape
+from config.config import *
+from config.constants import *
+from entities.shots import Shot
 
 
 class Player(CircleShape):

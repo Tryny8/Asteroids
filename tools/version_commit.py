@@ -29,7 +29,7 @@ def choose_version(current_version: str) -> str:
     choice = input("Souhaites-tu entrer une version manuellement ? (y/N): ").strip().lower()
     if choice == "y":
         while True:
-            new_version = input("Entrez la nouvelle version (ex: 1.2.0): ").strip()
+            new_version = input(f"Entrez la nouvelle version (ex: {current_version} + 1): ").strip()
             if is_valid_version(new_version):
                 return new_version
             print("⚠️ Format invalide. Utilise le format majeur.mineur.correctif (ex: 1.2.0)")
@@ -57,7 +57,7 @@ def git_commit_push(new_version: str, msg: str):
 def main():
     if not MAIN_FILE.exists():
         print(f"Erreur : fichier introuvable : {MAIN_FILE}")
-        exit(1)
+        sys.exit(1)
     
     if len(sys.argv) < 2:
         print("Usage : python tools/version_commit.py 'Message de commit'")
