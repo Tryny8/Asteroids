@@ -1,4 +1,4 @@
-name: Asteroids-Clone
+name: Asteroids Clone with Pygbag
 on:
   push:
     branches:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-pygbag:
-    name: Tryny8 - Asteroids-Clone
+    name: Tryny8 - Asteroids Clone
     runs-on: ubuntu-latest
 
     steps:
@@ -25,4 +25,9 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@4.1.7
       with:
         branch: gh-pages
-        folder: Asteroids/build/web
+        folder: build/web
+
+    - name: Install Python dependencies
+      uses: py-actions/py-dependency-install@v4
+      with:
+        path: "requirements.txt"
