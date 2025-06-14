@@ -34,6 +34,7 @@ async def main():
    # Init Text in Game
    police = pygame.font.Font("font/Arial.ttf", 50)
    # police = pygame.font.SysFont("monospace", 50)
+   text_Gui = police.render ("Starting Game", 2, "green")
    text_end_game = police.render ("Game over!", 2, "red")
    text_shoot = police.render ("Touché", 2, "red")
 
@@ -50,6 +51,7 @@ async def main():
       
       # Update object
       updatable.update(dt)
+      screen.blit(text_Gui, ((SCREEN_WIDTH / 2) - 160, 0))
       
       # Draw object
       for obj in drawable:
